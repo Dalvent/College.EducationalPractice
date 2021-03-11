@@ -1,0 +1,65 @@
+﻿<Window x:Class="LabaratoryWork2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LabaratoryWork2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="496.174" Width="881.391">
+    <StackPanel>
+        <StackPanel Background="LightGray" Margin="5" Orientation="Horizontal" >
+            <StackPanel>
+
+                <TextBlock Foreground="DarkBlue" Text="Площадь треугольника" FontSize="14px" Margin="10" FontWeight="Bold"/>
+                <StackPanel Orientation="Horizontal" Margin="10">
+                    <TextBlock Text="Сторона 1" Width="120px" FontSize="14px"/>
+                    <TextBox Text="{Binding TrianglePoint1}" Width="120px" FontSize="14px"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10">
+                    <TextBlock Text="Сторона 2" Width="120px" FontSize="14px"/>
+                    <TextBox Text="{Binding TrianglePoint2}" Width="120px" FontSize="14px"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10">
+                    <TextBlock Text="Сторона 3" Width="120px" FontSize="14px"/>
+                    <TextBox Text="{Binding TrianglePoint3}" Width="120px" FontSize="14px"/>
+                </StackPanel>
+                <Button Width="120px" Height="27px" HorizontalAlignment="Left" Margin="130, 5, 5, 5" Background="White" Foreground="Black" Content="Посчитать" Command="{Binding CalculateSquareCommand}"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="10">
+                <TextBlock Foreground="DarkBlue" Text="Площадь: " FontSize="14px" FontWeight="Bold"/>
+                <TextBlock Foreground="DarkBlue" Text="{Binding TriangleSquare}" FontSize="14px" FontWeight="Bold"/>
+            </StackPanel>
+        </StackPanel>
+
+
+        <StackPanel Background="LightGray" Margin="5" Orientation="Horizontal" >
+            <StackPanel>
+                <TextBlock Foreground="DarkBlue" Text="Все треугольники по 4 сторонам" FontSize="14px" Margin="10" FontWeight="Bold"/>
+                <StackPanel Orientation="Horizontal" Margin="10">
+                    <TextBlock Text="Сторона 1" Width="120px" FontSize="14px"/>
+                    <TextBox Text="{Binding TrianglePointInRange1}" Width="120px" FontSize="14px"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10">
+                    <TextBlock Text="Сторона 2" Width="120px" FontSize="14px"/>
+                    <TextBox Text="{Binding TrianglePointInRange2}" Width="120px" FontSize="14px"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10">
+                    <TextBlock Text="Сторона 3" Width="120px" FontSize="14px"/>
+                    <TextBox Text="{Binding TrianglePointInRange3}" Width="120px" FontSize="14px"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10">
+                    <TextBlock Text="Сторона 4" Width="120px" FontSize="14px"/>
+                    <TextBox Text="{Binding TrianglePointInRange4}" Width="120px" FontSize="14px"/>
+                </StackPanel>
+                <Button Width="120px" Height="27px" HorizontalAlignment="Left" Margin="130, 5, 5, 5" Background="White" Foreground="Black" Content="Посчитать" Command="{Binding CalculateSquareInRangeCommand}"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="10">
+                <TextBlock Foreground="DarkBlue" Text="Ответы: " FontSize="14px" FontWeight="Bold"/>
+                <ListView ItemsSource="{Binding TriangleSquareInRange}" Height="200" Width="200">
+                    
+                </ListView>
+            </StackPanel>
+        </StackPanel>
+
+    </StackPanel>
+</Window>
