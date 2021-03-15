@@ -1,0 +1,14 @@
+﻿<Window x:Class="LabaratoryWork3.Task2Window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LabaratoryWork3"
+        mc:Ignorable="d"
+        Title="Task2Window" Height="350" Width="780"
+        Loaded="Window_Loaded">
+    <StackPanel>
+        <Button Content="Use Pattern" Name="useTaskPatternButton" Click="useTaskPatternButton_Click"></Button>
+        <DataGrid Name="dataGrid"  AutoGenerateColumns="True" ColumnWidth="50" RowHeight="20"/>
+    </StackPanel>
+</Window>

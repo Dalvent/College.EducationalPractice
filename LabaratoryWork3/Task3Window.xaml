@@ -1,0 +1,14 @@
+﻿<Window x:Class="LabaratoryWork3.Task3Window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LabaratoryWork3"
+        mc:Ignorable="d"
+        Title="Task3Window" Height="450" Width="130.202">
+    <StackPanel>
+        <Button x:Name="showNotLastEvenButton" Click="showNotLastEvenButton_Click" Content="Показать"/>
+        <DataGrid ItemsSource="{Binding NumberContainers}" ColumnWidth="*" CanUserAddRows="True">
+        </DataGrid>
+    </StackPanel>
+</Window>
