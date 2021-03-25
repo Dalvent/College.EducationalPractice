@@ -1,0 +1,22 @@
+﻿<Window x:Class="LabaratoryWork7Part2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LabaratoryWork7Part2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        Initialized="Window_Initialized">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="SELL MANAGMENT LOL"  FontSize="30px" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontFamily="MingLiU_HKSCS-ExtB">
+            <TextBlock.Effect>
+                <DropShadowEffect BlurRadius="7" ShadowDepth="1" Color="LightYellow"/>
+            </TextBlock.Effect>
+        </TextBlock>
+        <Frame x:Name="appFrame" Grid.Row="1" NavigationUIVisibility="Hidden"/>
+    </Grid>
+</Window>

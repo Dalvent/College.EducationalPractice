@@ -61,28 +61,21 @@ namespace LabaratoryWork3
                 var cells = dataGrid.Columns.Select(column => column.GetCellContent(dataGrid.Items[0]) as TextBlock).ToList();
                 var firstPositiveNumberIndex = cells.IndexOf(cells.First(cell => IsCellValuePositiveNumber(cell)));
                 var lastPositiveNumberIndex = cells.IndexOf(cells.Last(cell => IsCellValuePositiveNumber(cell)));
-                var middleOfIntervalIndex = Math.Ceiling(
-                    Convert.ToDecimal((lastPositiveNumberIndex + firstPositiveNumberIndex) / 2)
-                );
-
+                var middleOfIntervalIndex = Math.Ceiling(Convert.ToDecimal((lastPositiveNumberIndex + firstPositiveNumberIndex) / 2));
                 for (int i = firstPositiveNumberIndex + 1; i < lastPositiveNumberIndex; i++)
                 {
-                    cells[i].Foreground = Brushes.Blue;
+                    cells[i].Foreground = Brushes.Red;
                     if (i < middleOfIntervalIndex)
                         SwapCellsValue(cells[i], cells[lastPositiveNumberIndex - i + firstPositiveNumberIndex]);
                 }
-            }
-            catch
-            {
-                return;
-            }
+            } catch { return; }
         }
 
         private bool IsCellValuePositiveNumber(TextBlock cell)
         {
             try
             {
-                return Convert.ToInt32(cell.Text) > 0;
+                return Convert.ToInt32(cell.Text) % 2 == 0;
             }
             catch (Exception)
             {

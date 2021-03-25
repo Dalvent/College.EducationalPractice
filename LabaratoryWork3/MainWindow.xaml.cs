@@ -32,10 +32,12 @@ namespace LabaratoryWork3
             InitializeComponent();
             render = new WpfRender(renderPanel);
             figure2D = new Figure2D(
-                VertexHelper.GenerateHexagon(4, HEXAGON_START_SIZE), 
-                new Transform2D() { Position = new System.Drawing.PointF(HEXAGON_START_SIZE, HEXAGON_START_SIZE), Rotation = 45 }, 
+                VertexHelper.GenerateHexagon(40, HEXAGON_START_SIZE), 
+                new Transform2D() { Position = 
+                new System.Drawing.PointF(HEXAGON_START_SIZE, 
+                HEXAGON_START_SIZE), Rotation = 45 }, 
                 System.Drawing.Color.Red);
-            tickExampleController = new TickExampleController(new WpfPanel(renderPanel), figure2D, 5);
+            tickExampleController = new TickExampleController(new WpfPanel(renderPanel), figure2D, 20f);
             
             dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             dispatcherTimer.Tick += RenderTick;
@@ -43,11 +45,15 @@ namespace LabaratoryWork3
             StartTimer();
         }
 
+        private DateTime lastFrameTime = DateTime.Now;
         private void RenderTick(object sender, EventArgs e)
         {
+            var nowDateTime = DateTime.Now;
+            var deltaTime = nowDateTime.Ticks - lastFrameTime.Ticks;
             render.Clear();
-            tickExampleController.OnTick();
+            tickExampleController.OnTick(deltaTime);
             render.Show(figure2D);
+            lastFrameTime = nowDateTime;
         }
 
         private void stopButton_Click(object sender, RoutedEventArgs e)

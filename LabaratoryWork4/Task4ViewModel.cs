@@ -16,7 +16,7 @@ namespace LabaratoryWork4
         {
             ShowTaskValue = new ActionCommand(() => {
                 var rightEvenNumbers = GetEvenСomposition(ValueTable.Take(ValueTable.Count / 2).ToArray());
-                var leftEvenNumbers = GetEvenСomposition(ValueTable.Skip(ValueTable.Count + 1 / 2).ToArray());
+                var leftEvenNumbers = GetEvenСomposition(ValueTable.Skip((ValueTable.Count + 1) / 2).ToArray());
                 var rightEvenNumbersString = rightEvenNumbers != null ? rightEvenNumbers.ToString() : "нет четных значений";
                 var leftEvenNumbersString = leftEvenNumbers != null ? leftEvenNumbers.ToString() : "нет четных значений";
 

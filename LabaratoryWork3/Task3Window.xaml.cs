@@ -38,10 +38,7 @@ namespace LabaratoryWork3
                 NumberContainers.Clear();
                 NumberContainers.Add(numberOnLastNotEvenPosition);
             }
-            catch
-            {
-                NumberContainers.Clear();
-            }
+            catch { NumberContainers.Clear(); }
         }
 
         public class NumberContainer

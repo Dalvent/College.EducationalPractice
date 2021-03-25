@@ -22,27 +22,19 @@ namespace LabaratoryWork3
     public partial class SettingsScreen : Window
     {
         private readonly Figure2D figure;
-
         public SettingsScreen(Figure2D figure)
         {
             InitializeComponent();
             this.figure = figure;
             sizeSlider.Value = figure.Transform.Scale.X;
         }
-
         private void changeColorButton_Click(object sender, RoutedEventArgs e)
         {
             var colorDialog = new ColorDialog();
-
             if (colorDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
                 figure.BackgroundColor = colorDialog.Color;
-            }
         }
-
-        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
+        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e) =>
             figure.Transform.Scale = new System.Drawing.PointF((float)e.NewValue, (float)e.NewValue);
-        }
     }
 }

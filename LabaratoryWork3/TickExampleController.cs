@@ -25,88 +25,43 @@ namespace LabaratoryWork3
             this.startAngle = 0;
         }
 
-        public void OnTick()
+        public void OnTick(float deltaTime)
         {
             var currentPosition = figure.Transform.Position;
-            figure.Transform.Position = GetNextFramePointPosition();
+            figure.Transform.Position = GetNextFramePointPosition(deltaTime);
 
             if (IsMovingRight() && !IsAllVertecies(figure.VerticesOnPosition, IsVertexMaxX))
-            {
                 SwicthDirection(currentPosition);
-            }
             else if (IsMovingBottom() && !IsAllVertecies(figure.VerticesOnPosition, IsVertexMaxY))
-            {
                 SwicthDirection(currentPosition);
-            }
             else if (IsMovingLeft() && !IsAllVertecies(figure.VerticesOnPosition, IsVertexMinX))
-            {
                 SwicthDirection(currentPosition);
-            }
             else if (IsMovingUp() && !IsAllVertecies(figure.VerticesOnPosition, IsVertexMinY))
-            {
                 SwicthDirection(currentPosition);
-            }
         }
 
         private void SwicthDirection(PointF currentPosition)
         {
             figure.Transform.Position = currentPosition;
             currentMoveAngle += 90;
-            figure.Transform.Position = GetNextFramePointPosition();
         }
-
-        private PointF GetNextFramePointPosition()
-        {
-            return MathHelper.TranslateX(figure.Transform.Position, currentMoveAngle, speed);
-        }
-
-        private bool IsMovingRight()
-        {
-            return currentMoveAngle % 360 == startAngle;
-        }
-
-        private bool IsMovingBottom()
-        {
-            return currentMoveAngle % 360 == startAngle + 90;
-        }
-
-        private bool IsMovingLeft()
-        {
-            return currentMoveAngle % 360 == startAngle + 180;
-        }
-
-        private bool IsMovingUp()
-        {
-            return currentMoveAngle % 360 == startAngle + 270;
-        }
+        private PointF GetNextFramePointPosition(float deltaTime) => MathHelper.
+            TranslateX(figure.Transform.Position, currentMoveAngle, speed * deltaTime * 0.000001f);
+        private bool IsMovingRight() => currentMoveAngle % 360 == startAngle;
+        private bool IsMovingBottom() => currentMoveAngle % 360 == startAngle + 90;
+        private bool IsMovingLeft() => currentMoveAngle % 360 == startAngle + 180;
+        private bool IsMovingUp() => currentMoveAngle % 360 == startAngle + 270;
 
         private bool IsAllVertecies(IEnumerable<PointF> vertecies, Func<PointF, bool> condition)
         {
             foreach (var vertex in vertecies)
-            {
                 if (!condition.Invoke(vertex))
-                {
                     return false;
-                }
-            }
             return true;
         }
-
-        private bool IsVertexMinX(PointF vertex)
-        {
-            return vertex.X > panel.Postion.X;
-        }
-        private bool IsVertexMaxX(PointF vertex)
-        {
-            return vertex.X < panel.Width;
-        }
-        private bool IsVertexMinY(PointF vertex)
-        {
-            return vertex.Y > panel.Postion.Y;
-        }
-        private bool IsVertexMaxY(PointF vertex)
-        {
-            return vertex.Y < panel.Height;
-        }
+        private bool IsVertexMinX(PointF vertex) => vertex.X > panel.Postion.X;
+        private bool IsVertexMaxX(PointF vertex) => vertex.X < panel.Width;
+        private bool IsVertexMinY(PointF vertex) => vertex.Y > panel.Postion.Y;
+        private bool IsVertexMaxY(PointF vertex) => vertex.Y < panel.Height;
     }
 }

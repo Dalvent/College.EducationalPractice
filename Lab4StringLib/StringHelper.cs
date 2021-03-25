@@ -12,9 +12,7 @@ namespace Lab4StringLib
         {
             var result = string1;
             foreach (var symbols in igonerSymbols)
-            {
                 result = result.Replace(symbols.ToString(), "");
-            }
             return result;
         }
 
@@ -29,14 +27,8 @@ namespace Lab4StringLib
                 if (pastSymbol == value[i])
                 {
                     reapetCount++;
-                    if (i != value.Length - 1)
-                    {
-                        continue;
-                    }
-                    else
-                    {
-                        i++;
-                    }
+                    if (i != value.Length - 1) continue;
+                    else i++;
                 }
                 if (reapetCount > 1 && targetSymbols.Contains(pastSymbol))
                 {
